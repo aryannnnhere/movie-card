@@ -1,6 +1,44 @@
-import React from "react"
+import React, { Component } from "react"
 
-const Moviecard = () =>{
+class MovieCard extends Component{
+    constructor(){
+        super();
+        this.state= {
+            title: "The Avengers",
+            plot: "Super Natural Powers",
+            price:  199,
+            rating: 8.9,
+            stars:0 
+        }
+    }
+    minusStars(){
+        if(this.state.stars <=0){
+                return;
+        }
+        this.setState({
+            stars: this.state.stars - 0.5
+        });
+}
+
+    addStars(){
+        // form 1
+        if(this.state.stars >=5){
+            return;
+        }
+        this.setState({
+            stars: this.state.stars + 0.5
+        });
+
+        // form 2
+        // this.setState((prevState)=>{
+        //     return {
+        //        stars: prevState.stars + 0.5
+        //     }
+        // });
+    }
+
+    render(){
+    const {title, plot, price, rating,stars} = this.state;
     return (
        <div className="main">
         <div className="movie-card">
@@ -8,23 +46,25 @@ const Moviecard = () =>{
                 <img alt="Poster" src="https://lumiere-a.akamaihd.net/v1/images/p_avengersendgame_19751_e14a0104.jpeg"/>
             </div>
             <div className="right">
-                <div className="title">The Avengers</div>
-                <div className="plot">Super Natural Powers</div>
-                <div className="price">199</div>
+                <div className="title">{title}</div>
+                <div className="plot">{plot}</div>
+                <div className="price">Rs.{price}</div>
 
                 <div className="footer">
-                <div className="rating">8.9</div>
+                <div className="rating">{rating}</div>
                 <div className="star-dis">
                 <img alt="minus"
-                 src="https://cdn-icons-png.flaticon.com/128/2801/2801932.png" className="str-btn" /> 
+                 src="https://cdn-icons-png.flaticon.com/128/2801/2801932.png" className="str-btn" 
+                 onClick={this.minusStars.bind(this)} /> 
 
                 <img alt="star"
                  src="https://cdn-icons-png.flaticon.com/128/2107/2107957.png" className="stars" />
-                 <img alt="plus"
-                 src="https://cdn-icons-png.flaticon.com/128/748/748113.png" className="str-btn" />
-                </div>
-                <span>0</span>
 
+                 <img alt="plus"src="https://cdn-icons-png.flaticon.com/128/748/748113.png" className="str-btn" onClick={this.addStars.bind(this)} />
+
+                 <span>{stars}</span>
+                </div>
+                
 
                <button className="favourite-btn">favourite</button>
                <button className="cart-btn">Add to cart</button>
@@ -37,5 +77,5 @@ const Moviecard = () =>{
     );
 
 }
-
-export default Moviecard;
+}
+export default MovieCard;
