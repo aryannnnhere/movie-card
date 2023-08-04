@@ -40,6 +40,7 @@ body {
   position: relative;
   flex: 10;
 }
+
 .movie-card .title {
   padding: 10px 20px;
   font-size: 25px;

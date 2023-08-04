@@ -1,10 +1,10 @@
-import MovieCard from "./moviecard"
+import MovieList from "./movielist"
 
 function App() {
   return (
     <>
     <h1>Movie App</h1>
-    <MovieCard/>
+    <MovieList/>
     </> 
   );
 }

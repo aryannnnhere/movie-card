@@ -8,8 +8,20 @@ class MovieCard extends Component{
             plot: "Super Natural Powers",
             price:  199,
             rating: 8.9,
-            stars:0 
+            stars:0,
+            fav: false,
+            addedincart:false 
         }
+    }
+    handleCart=()=>{
+        this.setState({
+         addedincart: !this.state.addedincart
+        })
+    }
+    handleFav=()=>{
+        this.setState({
+            fav: !this.state.fav
+        })
     }
     minusStars(){
         if(this.state.stars <=0){
@@ -34,11 +46,11 @@ class MovieCard extends Component{
         //     return {
         //        stars: prevState.stars + 0.5
         //     }
-        // });
+        // });  
     }
 
     render(){
-    const {title, plot, price, rating,stars} = this.state;
+    const {title, plot, price, rating,stars,fav,addedincart} = this.state;
     return (
        <div className="main">
         <div className="movie-card">
@@ -65,17 +77,16 @@ class MovieCard extends Component{
                  <span>{stars}</span>
                 </div>
                 
-
-               <button className="favourite-btn">favourite</button>
-               <button className="cart-btn">Add to cart</button>
+               {fav? <button onClick={this.handleFav} className="unfavourite-btn">Un-favourite 
+               </button>: <button onClick={this.handleFav}className="favourite-btn">Favourite</button>}
+        
+               <button onClick={this.handleCart} className={addedincart ?"unfavourite-btn":"cart-btn"}>{addedincart ? "Remove From Cart": "Add to cart"}</button>
                 </div>
             </div>
         </div>
-
-
        </div>
     );
 
-}
-}
+   }
+  }
 export default MovieCard;
