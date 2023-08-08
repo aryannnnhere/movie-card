@@ -41,7 +41,9 @@ class MovieCard extends Component{
     render(){
     const {movies, onIncStars, onClickFav, onClickAddtocart, onDecStars} =  this.props
     const {title, plot, price, rating,stars,fav,isInCart,poster} = this.props.movies;
-    console.log();
+    // console.log(onClickAddtocart);
+    // console.log(onClickFav);
+
 
     return (
        <div className="main">
